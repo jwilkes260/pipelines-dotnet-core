@@ -6,6 +6,8 @@ pool:
   
 variables:
   buildConfiguration: 'Release'
+  azureSubscriptionEndpoint: jwilkes@microsoft.com
+  WebAppName: linux-web-app-jw
 
 steps:
 - script: |
@@ -21,3 +23,10 @@ steps:
     testResultsFiles: '**/*.trx'
 
 - task: PublishBuildArtifacts@1
+
+- task: AzureRMWebAppDeployment@4
+  displayName: Azure App Service Deploy
+  inputs:
+    appType: webAppContainer
+    ConnectedServiceName: $(azureSubscriptionEndpoint)
+    WebAppName: $(WebAppName)
