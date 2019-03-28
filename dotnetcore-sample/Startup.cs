@@ -17,11 +17,11 @@ namespace dotnetcore_sample
         public Startup(IHostingEnvironment env)
         {
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string appSettingsFilePath = Path.Combine(assemblyFolder,"appsettings.json");
+            // string appSettingsFilePath = Path.Combine(assemblyFolder,"appsettings.json");
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile(appSettingsFilePath, optional: false, reloadOnChange: true)
+                // .AddJsonFile(appSettingsFilePath, optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
